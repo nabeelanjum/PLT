@@ -6,7 +6,7 @@ import ProductInfoTile from "../components/ProductInfoTile";
 
 const Home = () => {
 
-  const { getProductsList, productsList } = useProducts();
+  const { getProductsList, productsList, loading } = useProducts();
 
   useEffect(() => {
     getProductsList();
@@ -18,6 +18,8 @@ const Home = () => {
         data={productsList}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <ProductInfoTile product={item} />}
+        refreshing={loading}
+        onRefresh={getProductsList}
       />
     </View>
   );
