@@ -1,10 +1,12 @@
 import { useState } from "react";
+
 import invokeAPI from "../networking";
 import { endPoints } from "../networking/constants";
+import { Product } from "../common/types";
 
 const useProducts = () => {
 
-  const [productsList, setProductsList] = useState<any[]>([]);
+  const [productsList, setProductsList] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
 
   const getProductsList = async () => {

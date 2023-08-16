@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 
 import useProducts from "../hooks/useProducts";
+import ProductInfoTile from "../components/ProductInfoTile";
 
 const Home = () => {
 
@@ -16,7 +17,7 @@ const Home = () => {
       <FlatList
         data={productsList}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item, index }) => <View />}
+        renderItem={({ item }) => <ProductInfoTile product={item} />}
       />
     </View>
   );
