@@ -8,7 +8,8 @@ const AppStack = () => {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name={'Home'} component={Home} />
+      {/* Normally would keep the whole app's routes in a separate file */}
+      <Stack.Screen name={"Products"} component={Home} options={{ title: "Products" }} />
     </Stack.Navigator>
   );
 }
