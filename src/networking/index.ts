@@ -7,11 +7,10 @@ export default async function invokeAPI(apiConfig: AxiosRequestConfig) {
       ...apiConfig,
       url: `${BASE_URL}${apiConfig.url}`,
     }
-    console.log('API_CONFIG:', config);
     const response = await axios(config);
-    console.log(response);
     return response.data;
   } catch (error) {
-    console.warn(error);
+    console.log(error);
+    // TODO: Show a readable error message to the user
   }
 }
