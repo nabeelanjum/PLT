@@ -3,10 +3,13 @@ import { FlatList, StyleSheet, View } from "react-native";
 
 import useProducts from "../hooks/useProducts";
 import ProductInfoTile from "../components/ProductInfoTile";
+import useCart from "../hooks/useCart";
+import { Product } from "../common/types";
 
 const Home = () => {
 
   const { getProductsList, productsList, loading } = useProducts();
+  const { addItemToCart } = useCart();
 
   useEffect(() => {
     getProductsList();
@@ -17,7 +20,12 @@ const Home = () => {
       <FlatList
         data={productsList}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <ProductInfoTile product={item} />}
+        renderItem={({ item }) => (
+          <ProductInfoTile
+            onAddToCart={(item: Product) => addItemToCart(item)}
+            product={item}
+          />
+        )}
         refreshing={loading}
         onRefresh={getProductsList}
       />

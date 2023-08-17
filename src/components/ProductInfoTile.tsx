@@ -5,14 +5,22 @@ import { Product } from "../common/types";
 
 interface Props {
   product: Product;
+  onAddToCart?: (item: Product) => void;
+  quantityInCart?: number;
 }
 
-const ProductInfoTile: React.FC<Props> = ({ product }) => {
+const ProductInfoTile: React.FC<Props> = ({ product, onAddToCart, quantityInCart }) => {
   return (
     <Pressable style={styles.container}>
       <Text style={styles.productName}>{product.name}</Text>
       <Text>Color: {product.colour}</Text>
       <Text>Price: {product.price}</Text>
+      {!!quantityInCart && <Text>Quantity: {quantityInCart}</Text>}
+      {!!onAddToCart && (
+        <Pressable style={styles.addToCartButton} onPress={() => onAddToCart?.(product)}>
+          <Text>Add To Cart</Text>
+        </Pressable>
+      )}
     </Pressable>
   );
 }
@@ -33,5 +41,12 @@ const styles = StyleSheet.create({
   productName: {
     fontSize: 16,
     fontWeight: "500",
+  },
+  addToCartButton: {
+    backgroundColor: "cyan",
+    padding: 10,
+    borderRadius: 4,
+    marginTop: 15,
+    alignItems: "center",
   }
 });

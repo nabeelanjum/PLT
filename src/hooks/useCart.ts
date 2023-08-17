@@ -1,11 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Product } from "../common/types";
+import { ITEM_ADDED } from "../store/actionTypes";
 
 const useCart = () => {
 
-  const itemsInCart = useSelector((state: any) => state.cart?.items);
+  const dispatch = useDispatch();
+
+  const itemsInCart: Product[] = useSelector((state: any) => state.cart?.items);
+
+  const addItemToCart = (item: Product) => {
+    dispatch({ type: ITEM_ADDED, payload: item });
+  }
 
   return {
     itemsInCart,
+    addItemToCart,
   }
 
 }

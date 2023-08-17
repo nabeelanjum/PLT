@@ -5,11 +5,14 @@ import { useNavigation } from '@react-navigation/native';
 
 import Home from '../screens/Home';
 import Cart from '../screens/Cart';
+import useCart from '../hooks/useCart';
 
 const AppStack = () => {
   const Stack = createStackNavigator();
 
   const navigation = useNavigation();
+
+  const { itemsInCart } = useCart();
 
   return (
     <Stack.Navigator>
@@ -21,7 +24,7 @@ const AppStack = () => {
           title: "Products",
           headerRight: () => (
             <Pressable style={{ marginHorizontal: 20 }} onPress={() => navigation.navigate("Cart")}>
-              <Text>Cart</Text>
+              <Text>{`Cart (${itemsInCart.length})`}</Text>
             </Pressable>
           ),
         }}
