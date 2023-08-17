@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 import { Product } from "../common/types";
 
@@ -12,9 +12,15 @@ interface Props {
 const ProductInfoTile: React.FC<Props> = ({ product, onAddToCart, quantityInCart }) => {
   return (
     <Pressable style={styles.container}>
-      <Text style={styles.productName}>{product.name}</Text>
-      <Text>Color: {product.colour}</Text>
-      <Text>Price: {product.price}</Text>
+      <View style={{ flexDirection: "row" }}>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.productName}>{product.name}</Text>
+          <Text>Color: {product.colour}</Text>
+          <Text>Price: {product.price}</Text>
+        </View>
+        {!!product.img && <Image source={{ uri: product.img }} style={{ width: 100 }} resizeMode="contain" />}
+      </View>
+
       {!!quantityInCart && <Text>Quantity: {quantityInCart}</Text>}
       {!!onAddToCart && (
         <Pressable style={styles.addToCartButton} onPress={() => onAddToCart?.(product)}>
