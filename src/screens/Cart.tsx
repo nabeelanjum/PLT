@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 
 import ProductInfoTile from "../components/ProductInfoTile";
@@ -7,9 +7,6 @@ import useCart from "../hooks/useCart";
 const Cart = () => {
 
   const { itemsInCart } = useCart();
-
-  useEffect(() => {
-  }, []);
 
   return (
     <View style={styles.container}>
@@ -22,7 +19,7 @@ const Cart = () => {
             product={item}
           />
         )}
-        ListEmptyComponent={() => <Text style={{ marginTop: 100, textAlign: "center" }}>No items in the cart</Text>}
+        ListEmptyComponent={() => <Text style={styles.listEmptyText}>No items in the cart</Text>}
       />
     </View>
   );
@@ -33,5 +30,9 @@ export default Cart;
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-  }
+  },
+  listEmptyText: {
+    marginTop: 100,
+    textAlign: "center",
+  },
 });

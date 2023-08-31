@@ -1,5 +1,5 @@
 import { Product } from "../../common/types";
-import { ITEM_ADDED } from "../actionTypes";
+import { ITEM_ADDED } from "../actions/actionTypes";
 
 type State = {
   items: Product[],

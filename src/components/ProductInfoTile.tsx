@@ -12,13 +12,13 @@ interface Props {
 const ProductInfoTile: React.FC<Props> = ({ product, onAddToCart, quantityInCart }) => {
   return (
     <Pressable style={styles.container}>
-      <View style={{ flexDirection: "row" }}>
+      <View style={styles.productInfoContainer}>
         <View style={{ flex: 1 }}>
           <Text style={styles.productName}>{product.name}</Text>
           <Text>Color: {product.colour}</Text>
           <Text>Price: {product.price}</Text>
         </View>
-        {!!product.img && <Image source={{ uri: product.img }} style={{ width: 100 }} resizeMode="contain" />}
+        {!!product.img && <Image source={{ uri: product.img }} style={styles.productImage} resizeMode="contain" />}
       </View>
 
       {!!quantityInCart && <Text>Quantity: {quantityInCart}</Text>}
@@ -44,9 +44,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 0 },
   },
+  productInfoContainer: {
+    flexDirection: "row",
+  },
   productName: {
     fontSize: 16,
     fontWeight: "500",
+  },
+  productImage: {
+    width: 100,
   },
   addToCartButton: {
     backgroundColor: "cyan",

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Product } from "../common/types";
-import { ITEM_ADDED } from "../store/actionTypes";
+import { ITEM_ADDED } from "../store/actions/actionTypes";
 
 const useCart = () => {
 
